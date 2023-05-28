@@ -3,7 +3,6 @@ package com.string_calculator.test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-
 class StringCalculator {
 
 	@Test
@@ -39,5 +38,14 @@ class StringCalculator {
 		Calculator obj = new Calculator();
 		int result = obj.add("a,b");
 		assertEquals(-1, result);
+	}
+	
+	@Test
+	public void checkForTheSumOfNumbersInStringNewLineTag() {
+		Calculator obj = new Calculator();
+		long result = obj.add("1\n2,3");
+		assertEquals(6, result);
+		result = obj.add("2\n4\n1");
+		assertEquals(7, result);
 	}
 }
