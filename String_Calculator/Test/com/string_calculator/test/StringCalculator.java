@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class StringCalculator {
@@ -26,45 +27,45 @@ class StringCalculator {
 	private static final int INVALID_SINGLE_DIGIT = -1;
 	private static final int SINGLE_DIGIT = 1;
 	private static final int ZERO = 0;
-
+	
+	private Calculator obj;
+	
+	@BeforeEach
+	public void setUp() {
+		obj = new Calculator();
+	}
 	@Test
 	public void checkForEmptyString() {
-		Calculator obj = new Calculator();
 		long result = obj.add("");
 		assertEquals(ZERO, result);
 	}
 	
 	@Test
 	public void checkForTheSingleDigitString() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INPUT_SINGLE_DIGIT);
 		assertEquals(SINGLE_DIGIT, result);
 	}
 	
 	@Test
 	public void checkForInValidSingleLengthString() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INVALID_SINGLE_LENGTH_STRING);
 		assertEquals(INVALID_SINGLE_DIGIT, result);
 	}
 	
 	@Test
 	public void checkForTheSumOfNumbersInStringWithComma() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INPUT_WITH_ONLY_COMMA);
 		assertEquals(NUMBER_SUM_IF_COMMA, result);
 	}
 	
 	@Test
 	public void checkForInvalidStringWithComma() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INPUT_STRING_WITH_NODIGIT);
 		assertEquals(INVALID_SINGLE_DIGIT, result);
 	}
 	
 	@Test
 	public void checkForTheSumOfNumbersInStringNewLineTag() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INPUT_WITH_NEW_LINETAG);
 		assertEquals(NUMBER_SUM_IF_NEWLINETAG_COMMA, result);
 		result = obj.add(INPUT_WITH_ONLY_NEWLINETAG);
@@ -73,14 +74,12 @@ class StringCalculator {
 	 
 	@Test
 	public void checkForDoubleSlashInTheStringWithSemiColon() {
-		Calculator obj = new Calculator();
 		long result = obj.add(INPUT_DOUBLE_SLASH);
 		assertEquals(NUMBER_SUM_IF_DBLSTASH_NEWLINETAG, result);
 	}
 	
 	@Test
 	public void checkForSingleNegativeNumberInTheString() {
-		Calculator obj = new Calculator();
 		
 		NumberFormatException exception = assertThrows(NumberFormatException.class, 
 				() -> {
@@ -91,7 +90,6 @@ class StringCalculator {
 	
 	@Test 
 	public void checkForMultipleNegativeNumberInTheString() {
-		Calculator obj = new Calculator();
 		
 		NumberFormatException exception = assertThrows(NumberFormatException.class, 
 				() -> {

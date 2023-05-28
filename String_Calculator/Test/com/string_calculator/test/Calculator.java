@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
- 
+  
 public class Calculator {
 	private static final String DOUBLE_SLASH = "//";
 	private static final String NEW_LINE_TAG = "\n";
