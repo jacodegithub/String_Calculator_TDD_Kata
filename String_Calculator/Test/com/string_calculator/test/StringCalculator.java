@@ -48,4 +48,13 @@ class StringCalculator {
 		result = obj.add("2\n4\n1");
 		assertEquals(7, result);
 	}
+	
+	@Test
+	public void checkForCoubleSlashInTheStringWithSemiColon() {
+		Calculator obj = new Calculator();
+		int result = obj.add("//;1;2;3");
+		assertEquals(6, result);
+		result = obj.add("//;1\n2;3");
+		assertEquals(6, result);
+	}
 }
