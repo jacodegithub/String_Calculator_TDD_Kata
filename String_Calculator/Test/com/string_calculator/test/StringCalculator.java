@@ -1,7 +1,7 @@
 package com.string_calculator.test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+ 
 import java.util.Arrays;
 import java.util.List;
 
