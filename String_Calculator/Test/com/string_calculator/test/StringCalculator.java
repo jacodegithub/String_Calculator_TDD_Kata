@@ -12,5 +12,12 @@ class StringCalculator {
 		int result = obj.add("");
 		assertEquals(0, result);
 	}
+	
+	@Test
+	public void checkForValidString() {
+		Calculator obj = new Calculator();
+		int result = obj.add("a,b");
+		assertEquals(-1, result);
+	}
 
 }
