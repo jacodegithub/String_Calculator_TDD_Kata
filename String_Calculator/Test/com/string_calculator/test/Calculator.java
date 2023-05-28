@@ -35,6 +35,7 @@ public class Calculator {
 				sum += Integer.parseInt(String.valueOf(s));
 			}
 			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
+			else if(list.size() > 1) throw new NumberFormatException("Negatives are not allowed :"+list);
 		}
 		else if(comma && newLineTag) {
 			string = string.replace("\n", "").replace(",", "");
@@ -48,6 +49,7 @@ public class Calculator {
 				sum += Integer.parseInt(String.valueOf(s));
 			}
 			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
+			else if(list.size() > 1) throw new NumberFormatException("Negatives are not allowed :"+list);
 		}
 		else if(newLineTag) {
 			string = string.replace("\n", "");
@@ -61,6 +63,7 @@ public class Calculator {
 				sum += Integer.parseInt(String.valueOf(s));
 			}
 			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
+			else if(list.size() > 1) throw new NumberFormatException("Negatives are not allowed :"+list);
 		}
 		else if(comma) {
 			String[] str = string.split(",");
@@ -74,7 +77,19 @@ public class Calculator {
 				sum += Integer.parseInt(String.valueOf(s));
 			}
 			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
+			else if(list.size() > 1) throw new NumberFormatException("Negatives are not allowed :"+list);
 		}
 		return sum;
+	}
+	
+	public List<Integer> getNegativeNumbers(NumberFormatException exception) {
+		List<Integer> list = new ArrayList<>();
+		String message = exception.getMessage();
+		String[] parts = message.split(" :");
+		String negativeNumberList = parts[1].replaceAll("[^-,0-9]", "");
+		for(String num : negativeNumberList.split(",")) {
+			list.add(Integer.parseInt(num));
+		}
+		return list;
 	}
 }

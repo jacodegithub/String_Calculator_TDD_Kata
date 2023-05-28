@@ -1,8 +1,11 @@
 package com.string_calculator.test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 
 class StringCalculator {
 
@@ -70,5 +73,16 @@ class StringCalculator {
 		assertEquals("Negatives are not allowed", exception.getMessage());
 	}
 	
-	
+	@Test 
+	public void checkForMultipleNegativeNumberInTheString() {
+		Calculator obj = new Calculator();
+		
+		NumberFormatException exception = assertThrows(NumberFormatException.class, 
+				() -> {
+					obj.add("1,-2,-2,-3,-6,4");
+				});
+		List<Integer> list = obj.getNegativeNumbers(exception);
+		List<Integer> negNumbers = Arrays.asList(-2,-2,-3,-6);
+		assertEquals(list, negNumbers);
+	}
 }
