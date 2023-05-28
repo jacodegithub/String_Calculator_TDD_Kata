@@ -59,6 +59,7 @@ class StringCalculator {
 		assertEquals(6, result);
 	}
 	
+	@Test
 	public void checkForSingleNegativeNumberInTheString() {
 		Calculator obj = new Calculator();
 		
@@ -68,4 +69,6 @@ class StringCalculator {
 				});
 		assertEquals("Negatives are not allowed", exception.getMessage());
 	}
+	
+	
 }
