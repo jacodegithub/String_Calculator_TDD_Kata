@@ -1,11 +1,16 @@
 package com.string_calculator.test;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Calculator {
 	
 	public int add(String string) {
 		boolean comma = string.contains(",");
 		boolean newLineTag = string.contains("\n");
 		boolean doubleSlash = string.contains("//");
+		
+		List<Integer> list = new ArrayList<>();
 		
 		if(string.isEmpty()) return 0;
 		
@@ -21,13 +26,15 @@ public class Calculator {
 			}
 			string = string.replace("//", "").replace(";", "");
 			for(char s : string.toCharArray()) {
-				//if(s.startsWith(",")) continue;
-				System.out.println("t");
 				if(Character.isLetter(s)) {
 					return -1;
 				}
+				if(Integer.parseInt(String.valueOf(s)) < 0) {
+					list.add(Integer.parseInt(String.valueOf(s)));
+				}
 				sum += Integer.parseInt(String.valueOf(s));
 			}
+			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
 		}
 		else if(comma && newLineTag) {
 			string = string.replace("\n", "").replace(",", "");
@@ -35,8 +42,12 @@ public class Calculator {
 				if(Character.isLetter(s)) {
 					return -1;
 				}
+				if(Integer.parseInt(String.valueOf(s)) < 0) {
+					list.add(Integer.parseInt(String.valueOf(s)));
+				}
 				sum += Integer.parseInt(String.valueOf(s));
 			}
+			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
 		}
 		else if(newLineTag) {
 			string = string.replace("\n", "");
@@ -44,8 +55,12 @@ public class Calculator {
 				if(Character.isLetter(s)) {
 					return -1;
 				}
+				if(Integer.parseInt(String.valueOf(s)) < 0) {
+					list.add(Integer.parseInt(String.valueOf(s)));
+				}
 				sum += Integer.parseInt(String.valueOf(s));
 			}
+			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
 		}
 		else if(comma) {
 			String[] str = string.split(",");
@@ -53,8 +68,12 @@ public class Calculator {
 				if(Character.isLetter(s.charAt(0))) {
 					return -1;
 				}
-				sum += Integer.parseInt(s);
+				if(Integer.parseInt(String.valueOf(s)) < 0) {
+					list.add(Integer.parseInt(String.valueOf(s)));
+				}
+				sum += Integer.parseInt(String.valueOf(s));
 			}
+			if(list.size() == 1) throw new NumberFormatException("Negatives are not allowed");
 		}
 		return sum;
 	}

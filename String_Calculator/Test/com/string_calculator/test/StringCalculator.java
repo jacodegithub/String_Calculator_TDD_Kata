@@ -3,6 +3,7 @@ package com.string_calculator.test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+
 class StringCalculator {
 
 	@Test
@@ -56,5 +57,15 @@ class StringCalculator {
 		assertEquals(6, result);
 		result = obj.add("//;1\n2;3");
 		assertEquals(6, result);
+	}
+	
+	public void checkForSingleNegativeNumberInTheString() {
+		Calculator obj = new Calculator();
+		
+		NumberFormatException exception = assertThrows(NumberFormatException.class, 
+				() -> {
+					obj.add("1,-2,4");
+				});
+		assertEquals("Negatives are not allowed", exception.getMessage());
 	}
 }
