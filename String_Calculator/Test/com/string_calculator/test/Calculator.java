@@ -44,7 +44,7 @@ public class Calculator {
 			sum = engine(string, check, sum);
 		}
 		return sum;
-	}
+	} 
 	
 	public int engine(String string, String check, int sum) {
 		if(check == ONE) throw new NumberFormatException(MESSAGE);
