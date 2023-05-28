@@ -1,10 +1,8 @@
 package com.string_calculator.test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-import com.packageforTDD.testing.verifySum;
 
 class StringCalculator {
 
@@ -13,13 +11,6 @@ class StringCalculator {
 		Calculator obj = new Calculator();
 		int result = obj.add("");
 		assertEquals(0, result);
-	}
-	
-	@Test
-	public void checkForValidString() {
-		Calculator obj = new Calculator();
-		int result = obj.add("a,b");
-		assertEquals(-1, result);
 	}
 	
 	@Test
@@ -35,5 +26,18 @@ class StringCalculator {
 		int result = obj.add("a");
 		assertEquals(-1, result);
 	}
-
+	
+	@Test
+	public void checkForTheSumOfNumbersInStringWithComma() {
+		Calculator obj = new Calculator();
+		long result = obj.add("1,2,3");
+		assertEquals(6, result);
+	}
+	
+	@Test
+	public void checkForInvalidStringWithComma() {
+		Calculator obj = new Calculator();
+		int result = obj.add("a,b");
+		assertEquals(-1, result);
+	}
 }

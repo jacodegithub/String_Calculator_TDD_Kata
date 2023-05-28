@@ -11,11 +11,13 @@ public class Calculator {
 		}
 		
 		String[] str = string.split(",");
+		int sum = 0;
 		for(String s : str) {
 			if(Character.isLetter(s.charAt(0))) {
 				return -1;
 			}
+			sum += Integer.parseInt(s);
 		}
-		return 1;
+		return sum;
 	}
 }
